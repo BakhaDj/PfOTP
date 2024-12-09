@@ -4,25 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Главная страница</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
     <header>
         <nav>
             <ul>
-                <li><a href="index.html">Главная</a></li>
-                <li><a href="about.html">О нас</a></li>
-                <li><a href="contact.html">Контакты</a></li>
-                <li><a href="login.html">Войти</a></li>
+                <li><a href="{{ url_for('intro') }}">Главная</a></li>
+                <li><a href="{{ url_for('login') }}">Войти</a></li>
+                <li><a href="{{ url_for('about_us') }}">О нас</a></li>
+                <li><a href="{{ url_for('contact') }}">Контакты</a></li>
             </ul>
         </nav>
     </header>
+
+    <style>
+        @font-face {
+            font-family: "MOSCOW 2024";
+            src: url("{{ url_for('static', filename='fonts/MOSCOW2024.otf') }}") format('opentype');
+        }
+    </style>
+
     <main>
-        <h1>Добро пожаловать на наш сайт!</h1>
-        <p>чтобы получить больше возможностей - авторизуйся</p>
+        <h1 style="text-align: center;">Главная страница</h1>
     </main>
+
+    <section>
+        <h2 style="text-align: center;">Добро пожаловать на наш сайт!</h2>
+        <p style="text-align: center;">Чтобы получить больше возможностей - авторизуйся</p>
+    </section>
+
     <footer>
-        <p>&copy; 2024 My Website</p>
+        <p>&copy; 2024 GDK Inc. All rights reserved</p>
     </footer>
 </body>
 </html>
