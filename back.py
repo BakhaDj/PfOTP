@@ -33,70 +33,6 @@ def about_us():
 def contact():
     return render_template('contact.html')
 
-# Страница авторизации
-# @app.route('/login', methods=['GET', 'POST'])
-# def login():
-#     if request.method == 'POST':
-#         username = request.form['username']
-#         password = request.form['password']
-        
-#         if username == 'aaa' and password == '123456789':
-#             return render_template('dashboard.html')
-#     else:
-#         # try:
-#         #     conn = get_db_connection()
-#         #     with conn.cursor() as cursor:
-#         #         cursor.execute(
-#         #             'SELECT * FROM users WHERE username = %s AND password = %s',
-#         #             (username, password)
-#         #         )
-#         #         user = cursor.fetchone()
-            
-#         #     conn.close()
-            
-#         #     if user:
-#         #         session['user_id'] = user['id']
-#         #         user_cookie = str(uuid.uuid4())  # Генерация уникального cookie
-#         #         response = make_response(redirect(url_for('dashboard')))
-#         #         response.set_cookie('user_cookie', user_cookie, max_age=30*24*60*60)  # Cookie на 30 дней
-#         #         return response
-#         #     else:
-#         #         return "Неверные имя пользователя или пароль", 403
-#         # except Exception as e:
-#         #     return f"Ошибка базы данных: {e}", 500
-#         return render_template('login.html')
-
-
-# @app.route('/login', methods=['GET', 'POST'])
-# def login():
-#     if request.method == 'POST':
-#         username = request.form.get('username')
-#         password = request.form.get('password')
-        
-#         # Проверка учетных данных
-#         if username == 'aaa' and password == '123456789':
-#             return render_template('code_enter.html')
-#             a = '123456'
-#             if request.method == "POST":
-#                 user_code = request.form.get("code")
-#                 if user_code == a:
-#                     return render_template('dashboard.html')
-#         else:
-#             # Сообщение об ошибке при неверных данных
-#             return render_template('login.html', error="Неверный логин или пароль")
-#     return render_template('login.html')
-
-# @app.route('/code_enter', methods =['GET', 'POST'] ) 
-# def code_enter():
-#     if request.method == "POST":
-#         user_code = request.form.get("code")
-#         if user_code == a:
-#             return redirect(url_for("dashboard.html"))
-#         else:
-#             flash("Неверный код. Попробуйте снова.")
-#             return render_template("login.html")
-
-
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
@@ -146,12 +82,6 @@ def code_enter():
 # Страница после авторизации
 @app.route('/dashboard')
 def dashboard():
-    # if 'user_id' not in session:
-    #     return redirect(url_for('login'))
-    # user_cookie = request.cookies.get('user_cookie')
-#    return render_template('dashboard.html') 
-# f"Добро пожаловать в личный кабинет!" 
-# Ваш cookie: {user_cookie}"
     if not session.get('authenticated'):
         return redirect(url_for('login'))
     
@@ -185,10 +115,6 @@ def button_action():
 # Выход из аккаунта
 @app.route('/logout')
 def logout():
-    # session.pop('user_id', None)
-    # response = make_response(redirect(url_for('intro')))
-    # response.delete_cookie('user_cookie')  # Удаление cookie при выходе
-    # return response
     return render_template('intro.html')
 
 if __name__ == '__main__':
